@@ -25,6 +25,6 @@ bool isAllowedBetAmount(int bet);
 bool isNumberInRange(int number, int min, int max);
 
 // Prompts the the player for a binary answer as a char (y/n), validates and returns it
-bool getConfirmation(string prompt);
+bool getAffirmation(string prompt);
 
 #endif

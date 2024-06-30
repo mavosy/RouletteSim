@@ -13,8 +13,9 @@ const int Bet500 = 500;
 int getInputInt(string prompt)
 {
 	int enteredNumber;
+	bool isValidInput = false;
 
-	while (true)
+	while (!isValidInput)
 	{
 		cout << prompt;
 		cin >> enteredNumber;
@@ -28,7 +29,7 @@ int getInputInt(string prompt)
 		else
 		{
 			cin.ignore(numeric_limits<streamsize>::max(), '\n');
-			return enteredNumber;
+			isValidInput = true;
 		}
 	}
 
@@ -71,17 +72,19 @@ bool isNumberInRange(int number, int min, int max)
 }
 
 // Prompts the the player for a binary answer as a char (y/n), validates and returns it
-bool getConfirmation(string prompt)
+bool getAffirmation(string prompt)
 {
 	char binaryChar;
-	while (true)
+	bool isValidInput = false;
+
+	while (!isValidInput)
 	{
 		cout << prompt << " (y/n)" << endl;
 		cin >> binaryChar;
 
 		if (binaryChar == 'y' || binaryChar == 'n')
 		{
-			break;
+			isValidInput = true;
 		}
 		else
 		{

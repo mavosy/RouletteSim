@@ -28,7 +28,9 @@ void greetPlayer(string playerName)
 int getBetAmount(int balance)
 {
 	int bet = 0;
-	while (true)
+	bool isValidInput = false;
+
+	while (!isValidInput)
 	{
 		cout << "You can bet 100 chips, 300 chips or 500 chips" << endl;
 
@@ -48,7 +50,7 @@ int getBetAmount(int balance)
 		else if (bet <= balance)
 		{
 			cout << "You have chosen to bet " << bet << " chips." << endl << endl;
-			break;
+			isValidInput = true;
 		}
 		else
 		{
@@ -69,7 +71,9 @@ void printBalance(int balance)
 int getBetChoice()
 {
 	int betChoice = 0;
-	while (true)
+	bool isValidInput = false;
+
+	while (!isValidInput)
 	{
 		cout << "You can bet on a number or a color" << endl;
 		cout << "Enter 1 for betting on a number (1-36)" << endl;
@@ -78,7 +82,7 @@ int getBetChoice()
 
 		if (isNumberInRange(betChoice, 1, 2))	// Checks if betChoice is 1-2
 		{
-			break;
+			isValidInput = true;
 		}
 		else
 		{
@@ -92,14 +96,16 @@ int getBetChoice()
 int getChosenNumber()
 {
 	int chosenNumber = 0;
-	while (true)
+	bool isValidInput = false;
+
+	while (!isValidInput)
 	{
 		cout << "You can bet on numbers 1-36" << endl;
 		chosenNumber = getInputInt("Enter the number you want to bet on: ");
 
 		if (isNumberInRange(chosenNumber, 1, 36))	// Checks if chosenNumber is 1-36
 		{
-			break;
+			isValidInput = true;
 		}
 		else
 		{
@@ -126,14 +132,16 @@ string getColorName(int colorDigit)
 int getChosenColor()
 {
 	int chosenColorDigit = 0;
-	while (true)
+	bool isValidInput = false;
+
+	while (!isValidInput)
 	{
 		cout << "You can bet on red or black" << endl;
 		chosenColorDigit = getInputInt("Enter 1 for red or 2 for black: ");
 
 		if (isNumberInRange(chosenColorDigit, 1, 2))
 		{
-			break;
+			isValidInput = true;
 		}
 		else
 		{
@@ -146,11 +154,11 @@ int getChosenColor()
 // Asks the player if they want to play again from the beginning
 bool wantsToRestartGame()
 {
-	return getConfirmation("Do you want to play again from the beginning? Your chip count will be reset.");
+	return getAffirmation("Do you want to play again from the beginning? Your chip count will be reset.");
 }
 
 // Asks the player if they want to continue to the next round
 bool continueToNextRound()
 {
-	return getConfirmation("Do you want to continue to the next round of betting?");
+	return getAffirmation("Do you want to continue to the next round of betting?");
 }
